@@ -1,0 +1,164 @@
+/* القيم المشتركة */
+:root {
+    --color-text: #ffffff;
+    --color-muted: rgba(255, 255, 255, 0.8);
+    --color-accent: #e50914;
+    --glass-bg: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --radius: 20px;
+}
+
+/* Reset عام */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* الصفحة والخلفية */
+body {
+    min-height: 100vh;
+    padding: 24px;
+    overflow-x: hidden;
+    color: var(--color-text);
+    background-color: #222020;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    isolation: isolate;
+}
+
+/* دائرة زخرفية خلف الكارت */
+body::after {
+    content: "";
+    width: min(55vw, 600px);
+    aspect-ratio: 1;
+    background: var(--color-accent);
+    border-radius: 50%;
+    position: fixed;
+    right: -12vw;
+    bottom: -18vw;
+    z-index: -1;
+}
+
+/* الكارت الزجاجي */
+.main-container {
+    width: min(100%, 1100px);
+    min-height: min(80vh, 700px);
+    padding: clamp(20px, 4vw, 48px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    background: var(--glass-bg);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+/* رأس الصفحة والتنقل */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+}
+
+.navigation {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: clamp(12px, 2vw, 28px);
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-text);
+}
+
+.navigation a {
+    opacity: 0.85;
+    transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.navigation a:hover,
+.navigation a:focus-visible {
+    color: #ffb3b3;
+    opacity: 1;
+}
+
+.logo {
+    letter-spacing: 5px;
+    font-weight: 900;
+    font-size: clamp(1rem, 2vw, 1.4rem);
+}
+
+/* المحتوى الرئيسي */
+.content-info {
+    min-height: 55vh;
+    margin-top: clamp(40px, 8vh, 100px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: clamp(30px, 6vw, 90px);
+}
+
+.text {
+    flex: 1 1 45%;
+}
+
+h1 {
+    font-size: clamp(2rem, 5vw, 4.5rem);
+    line-height: 1.1;
+}
+
+.text p {
+    max-width: 520px;
+    margin-top: 24px;
+    color: var(--color-muted);
+    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+    line-height: 1.7;
+}
+
+.product-image {
+    flex: 1 1 45%;
+}
+
+.product-image img {
+    display: block;
+    width: min(100%, 480px);
+    max-width: 100%;
+    margin-inline: auto;
+    border-radius: 12px;
+}
+
+/* الشاشات الصغيرة */
+@media (max-width: 700px) {
+    body {
+        padding: 14px;
+        align-items: flex-start;
+    }
+
+    .main-container {
+        min-height: auto;
+        margin-block: 10px;
+    }
+
+    header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .content-info {
+        min-height: auto;
+        margin-top: 55px;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .product-image img {
+        width: 100%;
+    }
+}
