@@ -3,38 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glowing Navigation Menu | CodeByGaurav</title>
     <link rel="stylesheet" href="style.css">
-    <title>Adidas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 </head>
 <body>
-    <!-- الحاوية الرئيسية للكارت الزجاجي -->
-    <main class="main-container">
-        <header>
-            <!-- الشعار -->
-            <a class="logo" href="#">ADIDAS</a>
+    <div class="navigation">
+        <ul>
 
-            <!-- روابط التنقل -->
-            <nav>
-                <ul class="navigation">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Men</a></li>
-                    <li><a href="#">Women</a></li>
-                    <li><a href="#">Kids</a></li>
-                </ul>
-            </nav>
-        </header>
+            <li class="list active" style="--clr:#f44336;">
+                <a href="#">
+                    <span class="icon">
+                        <i class="fa-regular fa-house"></i>
+                    </span>
+                </a>
+            </li>
 
-        <!-- محتوى الصفحة: النص والصورة -->
-        <section class="content-info">
-            <div class="text">
-                <h1>Adidas Egypt <br>Running Shoes</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique obcaecati debitis nobis aut necessitatibus veritatis.</p>
-            </div>
+            <li class="list" style="--clr:#ffa117;">
+                <a href="#">
+                    <span class="icon">
+                       <i class="fa-regular fa-user"></i>
+                    </span>
+                </a>
+            </li>
 
-            <div class="product-image">
-                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80" alt="Red Adidas running shoe">
-            </div>
-        </section>
-    </main>
+            <li class="list" style="--clr:#0fc70f;">
+                <a href="#">
+                    <span class="icon">
+                       <i class="fa-regular fa-comment"></i>
+                    </span>
+                </a>
+            </li>
+
+             <li class="list" style="--clr:#2196f3;">
+                <a href="#">
+                    <span class="icon">
+                       <i class="fa-regular fa-camera"></i>
+                    </span>
+                </a>
+            </li>
+
+             <li class="list" style="--clr:#b145e9;">
+                <a href="#">
+                    <span class="icon">
+                        <i class="fa-solid fa-gear"></i>
+                    </span>
+                </a>
+            </li>
+            <div class="indicator"></div>
+        </ul>
+    </div>
 </body>
+<script src="script.js"></script>
 </html>

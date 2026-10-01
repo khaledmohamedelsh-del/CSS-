@@ -1,164 +1,143 @@
-/* القيم المشتركة */
-:root {
-    --color-text: #ffffff;
-    --color-muted: rgba(255, 255, 255, 0.8);
-    --color-accent: #e50914;
-    --glass-bg: rgba(255, 255, 255, 0.1);
-    --glass-border: rgba(255, 255, 255, 0.2);
-    --radius: 20px;
-}
-
-/* Reset عام */
-* {
-    margin: 0;
+*{
     padding: 0;
+    margin: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
 }
 
-/* الصفحة والخلفية */
-body {
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     min-height: 100vh;
-    padding: 24px;
-    overflow-x: hidden;
-    color: var(--color-text);
-    background-color: #222020;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background: #0c0c0c;
+}
+
+.navigation{
     position: relative;
-    isolation: isolate;
-}
-
-/* دائرة زخرفية خلف الكارت */
-body::after {
-    content: "";
-    width: min(55vw, 600px);
-    aspect-ratio: 1;
-    background: var(--color-accent);
-    border-radius: 50%;
-    position: fixed;
-    right: -12vw;
-    bottom: -18vw;
-    z-index: -1;
-}
-
-/* الكارت الزجاجي */
-.main-container {
-    width: min(100%, 1100px);
-    min-height: min(80vh, 700px);
-    padding: clamp(20px, 4vw, 48px);
-    border: 1px solid var(--glass-border);
-    border-radius: var(--radius);
-    background: var(--glass-bg);
-    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-}
-
-/* رأس الصفحة والتنقل */
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 24px;
-}
-
-.navigation {
-    list-style: none;
+    width: 400px;
+    height: 60px;
+    background: white;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
-    gap: clamp(12px, 2vw, 28px);
+    border-radius: 10px;
 }
 
-a {
-    text-decoration: none;
-    color: var(--color-text);
-}
-
-.navigation a {
-    opacity: 0.85;
-    transition: opacity 0.2s ease, color 0.2s ease;
-}
-
-.navigation a:hover,
-.navigation a:focus-visible {
-    color: #ffb3b3;
-    opacity: 1;
-}
-
-.logo {
-    letter-spacing: 5px;
-    font-weight: 900;
-    font-size: clamp(1rem, 2vw, 1.4rem);
-}
-
-/* المحتوى الرئيسي */
-.content-info {
-    min-height: 55vh;
-    margin-top: clamp(40px, 8vh, 100px);
+.navigation ul{
+    width: 350px;
     display: flex;
-    justify-content: space-between;
+}
+
+.navigation ul li{
+    list-style: none;
+    position: relative;
+    width: 70px;
+    height: 60px;
+    z-index: 2;
+}
+
+.navigation ul li a{
+    text-decoration: none;
+    color: #555;
+    position: relative;
+    display: flex;
+    justify-content: center;
     align-items: center;
-    gap: clamp(30px, 6vw, 90px);
+    width: 100%;
+    height: 100%;
 }
 
-.text {
-    flex: 1 1 45%;
-}
-
-h1 {
-    font-size: clamp(2rem, 5vw, 4.5rem);
-    line-height: 1.1;
-}
-
-.text p {
-    max-width: 520px;
-    margin-top: 24px;
-    color: var(--color-muted);
-    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
-    line-height: 1.7;
-}
-
-.product-image {
-    flex: 1 1 45%;
-}
-
-.product-image img {
+.navigation ul li a .icon{
+    position: relative;
+    background: #fff;
     display: block;
-    width: min(100%, 480px);
-    max-width: 100%;
-    margin-inline: auto;
-    border-radius: 12px;
+    width: 55px;
+    height: 55px;
+    text-align: center;
+    line-height: 65px;
+    border-radius: 65px;
+    color: #222327;
+    font-size: 1.5em;
+    transition: 0.5s;
+    transition-delay: 0s;
 }
 
-/* الشاشات الصغيرة */
-@media (max-width: 700px) {
-    body {
-        padding: 14px;
-        align-items: flex-start;
-    }
-
-    .main-container {
-        min-height: auto;
-        margin-block: 10px;
-    }
-
-    header {
-        align-items: flex-start;
-        flex-direction: column;
-    }
-
-    .content-info {
-        min-height: auto;
-        margin-top: 55px;
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .product-image img {
-        width: 100%;
-    }
+.indicator{
+    position: absolute;
+    top: -35px;
+    width: 70px;
+    height: 70px;
+    background: #fff;
+    border-radius: 50%;
+    z-index: 1;
+    transition: 0.5s;
 }
+
+.navigation ul li.active a .icon{
+    background: var(--clr);
+    color: #fff;
+    transform: translateY(-27px);
+    transition-delay: 0.25s;
+}
+
+.navigation ul li a .icon::before{
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--clr);
+    border-radius: 50%;
+    filter: blur(5px);
+    opacity: 0;
+    transition: .5s;
+    transition-delay: 0.15s;
+}
+
+.navigation ul li.active a .icon::before{
+    opacity: 0.5;
+    transition-delay: 0.25s;
+}
+
+.indicator::before{
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: -27.5px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    box-shadow: 15px 18px #fff;
+}
+
+.indicator::after{
+    content: "";
+    position: absolute;
+    top: 5px;
+    right: -27.5px;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    box-shadow: -15px 18px #fff;
+}
+
+.navigation ul li:nth-child(1).active ~ .indicator{
+    transform: translateX(calc(70px * 0));
+}
+
+.navigation ul li:nth-child(2).active ~ .indicator{
+    transform: translateX(calc(70px * 1));
+}
+.navigation ul li:nth-child(3).active ~ .indicator{
+    transform: translateX(calc(70px * 2));
+}
+.navigation ul li:nth-child(4).active ~ .indicator{
+    transform: translateX(calc(70px * 3));
+}
+.navigation ul li:nth-child(5).active ~ .indicator{
+    transform: translateX(calc(70px * 4));
+}
+
+
+
